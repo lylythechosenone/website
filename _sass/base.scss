@@ -85,8 +85,14 @@ $codeFont: "JetBrains Mono", "NerdFontsSymbols Nerd Font";
 
   section {
     padding: 2rem;
-    width: 900px;
+    width: calc(60%);
     flex: 1;
+  }
+
+  @media (max-width: calc(1440px + 4rem)) {
+    section {
+      width: 900px;
+    }
   }
 
   @media (max-width: calc(900px + 4rem)) {
