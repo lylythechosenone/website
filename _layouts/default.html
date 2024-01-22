@@ -8,6 +8,8 @@
 
   {% if page.description %}
   <meta name="description" content="{{ page.description }}">
+  {% else if page.excerpt %}
+  <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
   {% endif %}
 
   {% if page.tags %}
@@ -33,7 +35,8 @@
       }
     });
   </script>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    type="text/javascript"></script>
 </head>
 
 <body>
