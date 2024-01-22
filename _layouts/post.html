@@ -11,9 +11,9 @@ layout: default
 <aside class="author">
     <h3>{% avatar {{author}} %} {{site.data.authors[author].name}}</h3>
     <p>{{site.data.authors[author].about}}</p>
-<h6>
-     {{author}}
-    {% if author_info.discord %} • 󰙯 {{author_info.discord}}{% endif %}
-    {% if author_info.twitter %} •  {{author_info.twitter}}{% endif %}
-</h6>
+    <h6>
+         {{author}}
+        {% if author_info.discord %} • 󰙯 {{author_info.discord}}{% endif %}
+        {% if author_info.twitter %} •  {{author_info.twitter}}{% endif %}
+    </h6>
 </aside>
