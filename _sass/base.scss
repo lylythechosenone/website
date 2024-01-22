@@ -1,0 +1,751 @@
+$bodyFont: "Inter", "NerdFontsSymbols Nerd Font";
+$codeFont: "JetBrains Mono", "NerdFontsSymbols Nerd Font";
+
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=\
+  JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap';
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
+
+@mixin styles($crust,
+  $mantle,
+  $base,
+  $surface0,
+  $surface1,
+  $surface2,
+  $overlay0,
+  $overlay1,
+  $overlay2,
+  $subtext0,
+  $subtext1,
+  $text,
+  $lavender,
+  $blue,
+  $saphire,
+  $sky,
+  $teal,
+  $green,
+  $yellow,
+  $peach,
+  $maroon,
+  $red,
+  $mauve,
+  $pink,
+  $flamingo,
+  $rosewater) {
+  body {
+    background: $base;
+    width: 100%;
+    color: $text;
+    font-family: $bodyFont;
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  nav {
+    background-color: $crust;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  nav>a {
+    color: $text;
+    padding: 1rem;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.1s ease-in-out;
+  }
+
+  nav>a:hover,
+  nav>a:focus,
+  nav>a:active {
+    background-color: $mantle;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $mantle;
+    border-radius: 10px;
+  }
+
+  article {
+    height: calc(100vh - 3rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+  }
+
+  section {
+    padding: 2rem;
+    width: 900px;
+    flex: 1;
+  }
+
+  @media (max-width: calc(900px + 4rem)) {
+    section {
+      width: calc(100% - 4rem);
+    }
+  }
+
+  footer {
+    width: calc(100% - 3rem);
+    background-color: $mantle;
+    padding: 1.5rem;
+  }
+
+  :not(nav)>a {
+    color: $blue;
+    text-decoration: none;
+    background-image: linear-gradient($blue, $blue);
+    background-size: 0% 0.1em;
+    background-position-y: 100%;
+    background-repeat: no-repeat;
+    transition-property: background-size;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+  }
+
+  :not(nav)>a:hover,
+  :not(nav)>a:focus,
+  :not(nav)>a:active {
+    background-size: 100% 0.1em;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h1.title {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.75rem;
+  }
+
+  h6 {
+    font-size: 0.5rem;
+  }
+
+  h1,
+  h2 {
+    color: $subtext1;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $subtext0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.7em;
+    margin-left: -0.5vw;
+  }
+
+  span.anchor {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+  }
+
+  h1:hover span.anchor,
+  h2:hover span.anchor,
+  h3:hover span.anchor,
+  h4:hover span.anchor,
+  h5:hover span.anchor,
+  h6:hover span.anchor {
+    opacity: 1;
+  }
+
+  h1:has(+ h2),
+  h1:has(+ h3),
+  h1:has(+ h4),
+  h1:has(+ h5),
+  h1:has(+ h6),
+  h2:has(+ h3),
+  h2:has(+ h4),
+  h2:has(+ h5),
+  h2:has(+ h6),
+  h3:has(+ h4),
+  h3:has(+ h5),
+  h3:has(+ h6),
+  h4:has(+ h5),
+  h4:has(+ h6),
+  h5:has(+ h6) {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 1em;
+    hyphens: auto;
+  }
+
+  blockquote {
+    padding: 0.5em;
+    border-left: $surface1 3px solid;
+    margin-bottom: 1em;
+  }
+
+  blockquote>p {
+    margin-bottom: 0;
+  }
+
+  blockquote cite {
+    margin-top: 0.3em;
+    display: block;
+    color: $subtext0;
+    margin-bottom: -0.8em;
+  }
+
+  blockquote cite::before {
+    content: "— ";
+    color: $surface2;
+  }
+
+  blockquote :has(> cite) {
+    padding-bottom: 0;
+  }
+
+  pre:not(.lineno) {
+    font-family: $codeFont;
+    background-color: $surface0;
+    padding: 0.3em 0.3em;
+    border-radius: 0.2em;
+    counter-reset: line;
+  }
+
+  pre.lineno {
+    font-family: $codeFont;
+    color: $surface1;
+    margin-right: 1em;
+    padding: 0.3em;
+    padding-right: 0.5em;
+    border-right: 2px solid $surface1;
+  }
+
+  .highlight .hll {
+    background-color: #ffffcc
+  }
+
+  .highlight .c {
+    color: $overlay0
+  }
+
+  .highlight .err {
+    color: $red
+  }
+
+  .highlight .esc {
+    color: $text
+  }
+
+  .highlight .g {
+    color: $text
+  }
+
+  .highlight .k {
+    color: $mauve
+  }
+
+  .highlight .l {
+    color: $text
+  }
+
+  .highlight .n {
+    color: $peach
+  }
+
+  .highlight .o {
+    color: $sky
+  }
+
+  .highlight .x {
+    color: $text
+  }
+
+  .highlight .p {
+    color: $text
+  }
+
+  .highlight .ch {
+    color: $overlay0
+  }
+
+  .highlight .cm {
+    color: $overlay0
+  }
+
+  .highlight .cp {
+    color: $overlay0
+  }
+
+  .highlight .cpf {
+    color: $overlay0
+  }
+
+  .highlight .c1 {
+    color: $overlay0
+  }
+
+  .highlight .cs {
+    color: $overlay0
+  }
+
+  .highlight .gd {
+    color: $text
+  }
+
+  .highlight .ge {
+    color: $text
+  }
+
+  .highlight .gr {
+    color: $text
+  }
+
+  .highlight .gh {
+    color: $blue;
+    font-weight: bold
+  }
+
+  .highlight .gi {
+    color: $text
+  }
+
+  .highlight .go {
+    color: $text
+  }
+
+  .highlight .gp {
+    color: $text
+  }
+
+  .highlight .gs {
+    color: $text
+  }
+
+  .highlight .gu {
+    color: $text
+  }
+
+  .highlight .gt {
+    color: $text
+  }
+
+  .highlight .kc {
+    color: $peach
+  }
+
+  .highlight .kd {
+    color: $blue
+  }
+
+  .highlight .kn {
+    color: $teal
+  }
+
+  .highlight .kp {
+    color: $mauve
+  }
+
+  .highlight .kr {
+    color: $mauve
+  }
+
+  .highlight .kt {
+    color: $blue
+  }
+
+  .highlight .ld {
+    color: $text
+  }
+
+  .highlight .m {
+    color: $peach
+  }
+
+  .highlight .s {
+    color: $green
+  }
+
+  .highlight .na {
+    color: $blue
+  }
+
+  .highlight .nb {
+    color: $mauve
+  }
+
+  .highlight .nc {
+    color: $peach
+  }
+
+  .highlight .no {
+    color: $yellow
+  }
+
+  .highlight .nd {
+    color: $blue
+  }
+
+  .highlight .ni {
+    color: $peach
+  }
+
+  .highlight .ne {
+    color: $peach
+  }
+
+  .highlight .nf {
+    color: $blue
+  }
+
+  .highlight .nl {
+    color: $blue
+  }
+
+  .highlight .nn {
+    color: $peach
+  }
+
+  .highlight .nx {
+    color: $peach
+  }
+
+  .highlight .py {
+    color: $peach
+  }
+
+  .highlight .nt {
+    color: $mauve
+  }
+
+  .highlight .nv {
+    color: $peach
+  }
+
+  .highlight .ow {
+    color: $sky
+  }
+
+  .highlight .pm {
+    color: $text
+  }
+
+  .highlight .w {
+    color: $text
+  }
+
+  .highlight .mb {
+    color: $peach
+  }
+
+  .highlight .mf {
+    color: $peach
+  }
+
+  .highlight .mh {
+    color: $peach
+  }
+
+  .highlight .mi {
+    color: $peach
+  }
+
+  .highlight .mo {
+    color: $peach
+  }
+
+  .highlight .sa {
+    color: $green
+  }
+
+  .highlight .sb {
+    color: $green
+  }
+
+  .highlight .sc {
+    color: $green
+  }
+
+  .highlight .dl {
+    color: $green
+  }
+
+  .highlight .sd {
+    color: $green
+  }
+
+  .highlight .s2 {
+    color: $green
+  }
+
+  .highlight .se {
+    color: $green
+  }
+
+  .highlight .sh {
+    color: $green
+  }
+
+  .highlight .si {
+    color: $green
+  }
+
+  .highlight .sx {
+    color: $green
+  }
+
+  .highlight .sr {
+    color: $green
+  }
+
+  .highlight .s1 {
+    color: $green
+  }
+
+  .highlight .ss {
+    color: $green
+  }
+
+  .highlight .bp {
+    color: $peach
+  }
+
+  .highlight .fm {
+    color: $sky
+  }
+
+  .highlight .vc {
+    color: $peach
+  }
+
+  .highlight .vg {
+    color: $peach
+  }
+
+  .highlight .vi {
+    color: $peach
+  }
+
+  .highlight .vm {
+    color: $peach
+  }
+
+  .highlight .il {
+    color: $peach
+  }
+
+  li::marker {
+    color: $overlay0;
+  }
+
+  ol,
+  ul {
+    margin-bottom: 1em;
+  }
+
+  .post {
+    background-color: $mantle;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+  }
+
+  div.tags {
+    margin-left: -0.5rem;
+  }
+
+  span.tag {
+    background-color: $surface1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-right: 1rem;
+    margin-bottom: 0.25rem;
+    display: inline-block;
+  }
+
+  abbr {
+    text-decoration: none;
+    border-bottom: 1px dotted $overlay0;
+    cursor: help;
+    transition: border-bottom 0.1s ease-in-out;
+  }
+
+  abbr:hover,
+  abbr:focus,
+  abbr:active {
+    border-bottom: 2px solid;
+    border-bottom-color: inherit;
+  }
+
+  img.avatar {
+    height: 1em;
+    width: auto;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+
+  aside.author {
+    padding: 0.5rem 1.5rem;
+    background-color: $crust;
+  }
+
+  aside.author p {
+    color: $subtext0;
+  }
+
+  aside.author h3 {
+    color: $subtext1;
+  }
+
+  div.footnotes {
+    margin-top: 5rem;
+    border-top: 1px solid $surface0;
+    padding-top: 1rem;
+  }
+
+  blockquote .footnotes {
+    display: none;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid $surface0;
+    margin: 1rem 0;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin-left: 2rem;
+  }
+
+  table,
+  th,
+  td {
+    padding: 0.5rem;
+    border: 1px solid $surface0;
+    border-collapse: collapse;
+  }
+
+  th {
+    font-weight: bold;
+    border-bottom: 3px solid $surface0;
+  }
+
+  tfoot td {
+    border-top: 3px solid $surface0;
+  }
+
+  tbody+tbody {
+    border-top: 2px solid $surface0;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: $mantle;
+  }
+
+  #MathJax_Message {
+    border-radius: 0.25rem;
+    background-color: $crust !important;
+    border: none !important;
+    color: $text !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  @include styles($crust: #11111b,
+    $mantle: #181825,
+    $base: #1e1e2e,
+    $surface0: #313244,
+    $surface1: #45475a,
+    $surface2: #585b70,
+    $overlay0: #6c7086,
+    $overlay1: #7f849c,
+    $overlay2: #9399b2,
+    $subtext0: #a6adc8,
+    $subtext1: #bac2de,
+    $text: #cdd6f4,
+    $lavender: #b4befe,
+    $blue: #89b4fa,
+    $saphire: #74c7ec,
+    $sky: #89dceb,
+    $teal: #94e2d5,
+    $green: #a6e3a1,
+    $yellow: #f9e2af,
+    $peach: #fab387,
+    $maroon: #eba0ac,
+    $red: #f38ba8,
+    $mauve: #cba6f7,
+    $pink: #f5c2e7,
+    $flamingo: #f2cdcd,
+    $rosewater: #f5e0dc,
+  );
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: dark;
+  }
+
+  @include styles($crust: #dce0e8,
+    $mantle: #e6e9ef,
+    $base: #eff1f5,
+    $surface0: #ccd0da,
+    $surface1: #bcc0cc,
+    $surface2: #acb0be,
+    $overlay0: #9ca0b0,
+    $overlay1: #8c8fa1,
+    $overlay2: #7c7f93,
+    $subtext0: #6c6f85,
+    $subtext1: #5c5f77,
+    $text: #4c4f69,
+    $lavender: #7287fd,
+    $blue: #1e66f5,
+    $saphire: #209fb5,
+    $sky: #04a5e5,
+    $teal: #179299,
+    $green: #40a02b,
+    $yellow: #df8e1d,
+    $peach: #fe640b,
+    $maroon: #e64553,
+    $red: #d20f39,
+    $mauve: #8839ef,
+    $pink: #ea76cb,
+    $flamingo: #dd7878,
+    $rosewater: #dc8a78,
+  );
+}

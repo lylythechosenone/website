@@ -1,0 +1,19 @@
+---
+layout: default
+---
+{% assign author = page.author | default: site.author %}
+{% assign author_info = site.data.authors[author] %}
+<h5>{{ page.date | date: "%B %d, %Y" }} • <abbr title="GitHub: {{ author }}">{{ author_info.name }}</abbr>
+</h5>
+
+{{ content }}
+
+<aside class="author">
+    <h3>{% avatar {{author}} %} {{site.data.authors[author].name}}</h3>
+    <p>{{site.data.authors[author].about}}</p>
+<h6>
+     {{author}}
+    {% if author_info.discord %} • 󰙯 {{author_info.discord}}{% endif %}
+    {% if author_info.twitter %} •  {{author_info.twitter}}{% endif %}
+</h6>
+</aside>

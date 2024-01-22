@@ -1,0 +1,32 @@
+url: "https://lylythechosenone.is-a.dev"
+title: "Lysander Mealy"
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+author: lylythechosenone
+github:
+  repository_url: "https://github.com/lylythechosenone/website"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      permalink: /blog/:year/:month/:day/:title
+      layout: post
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+plugins:
+  - jekyll-avatar

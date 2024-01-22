@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{{ page.title }} | {{ site.title }}</title>
+
+  <meta charset="UTF-8">
+
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% endif %}
+
+  {% if page.tags %}
+  <meta name="keywords" content="{{ page.tags }}">
+  {% endif %}
+
+  <meta name="author" content="{{ page.author | default: site.author }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <link rel="icon" href="assets/icons/black.svg" media="(prefers-color-scheme:light)">
+  <link rel="icon" href="assets/icons/white.svg" media="(prefers-color-scheme:dark)">
+
+  <link rel="mask-icon" href="assets/icons/mask.svg" color="#000000" media="(prefers-color-scheme:light)">
+  <link rel="mask-icon" href="assets/icons/mask.svg" color="#ffffff" media="(prefers-color-scheme:dark)">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$'], ['\\(','\\)']]
+      }
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="/projects">Projects</a>
+  </nav>
+
+  <article>
+    <section>
+      <h1 class="title">{{ page.title }}</h1>
+
+      {% if page.github %} <h4> <a href="https://github.com/{{page.github}}">{{page.github}}</a></h4> {% endif %}
+
+      {% include anchor_headings.html html=content anchorBody='<span class="anchor">#</span>' %}
+      {% if page.tags %} {% include tags.html tags=page.tags %}{% endif %}
+    </section>
+
+    <footer>
+      <p>
+        <a href="{{ site.github.repository_url }}/blob/main/{{ page.path }}"> View Source</a>
+      </p>
+
+      <p>
+        <i>
+          Copyright &copy; {{ site.time | date: "%Y" }}
+          <abbr title="GitHub: {{ site.author }}">{{ site.data.authors[site.author].name }}</abbr>{% if page.author %},
+          <abbr title="GitHub: {{ page.author }}">{{ site.data.authors[page.author].name }}</abbr>
+          {% endif %}
+        </i>
+      </p>
+    </footer>
+  </article>
+</body>
+
+</html>

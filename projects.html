@@ -1,0 +1,14 @@
+---
+title: Projects
+---
+
+{% for post in site.projects %}
+{% assign author = post.author | default: site.author %}
+<div class="post">
+    <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+    <blockquote>{{ post.excerpt }}</blockquote>
+    {% include tags.html tags=post.tags %}
+</div>
+{% else %}
+<p>No posts yet. Check back soon.</p>
+{% endfor %}
